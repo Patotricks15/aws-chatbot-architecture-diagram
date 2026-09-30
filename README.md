@@ -53,6 +53,23 @@ Use this variant when you want open-ended, generative responses instead of Lex's
 4. Lambda reads/writes the conversation history in **Amazon DynamoDB**.
 5. Lambda returns the model's response to the client, which displays it to the end user.
 
+### State management (DynamoDB)
+
+Bedrock is stateless — it only sees whatever is in the prompt of a single `InvokeModel` call. So conversation state (what was said so far) has to live somewhere else, and DynamoDB is that place:
+
+- **Partition key**: `sessionId` (one per conversation — e.g. a UUID the client generates at chat start, or `userId` if you only need one active conversation per user).
+- **Sort key**: `timestamp` (or a monotonically increasing `turnId`) — lets you store one item per message and query them back in order.
+- **Attributes per item**: `role` (`user` / `assistant`), `message` (the text), and optionally `tokens` if you want to track prompt-size growth.
+- **TTL attribute**: e.g. `expiresAt`, so DynamoDB automatically deletes old sessions instead of growing forever.
+
+On each request, the Lambda orchestrator:
+
+1. Queries DynamoDB for the last *N* items (or last *K* tokens) for that `sessionId`.
+2. Builds the prompt for Bedrock as `[system prompt] + [retrieved history] + [new user message]`.
+3. After getting the model's reply, writes **both** the user message and the assistant reply back to DynamoDB as new items, so the next turn can see them.
+
+This keeps state management simple (one table, one query, one write) while avoiding unbounded prompt growth — you cap how much history you pull back per turn, and let TTL clean up finished/abandoned sessions.
+
 ## Why these architectures are simple
 
 - Only one entry point (the client) and one conversational AI service — no extra API layers.
