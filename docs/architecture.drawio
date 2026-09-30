@@ -1,0 +1,40 @@
+<mxfile host="Drawpyo" modified="2026-09-30T14:37:47" agent="Python 3.12, Drawpyo 0.23" version="21.6.5" type="device">
+  <diagram name="Page-1" id="125182670258144">
+    <mxGraphModel dx="2037" dy="830" grid="1" gridSize="10" guides="1" toolTips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="125182670966176" value="AWS Cloud" style="whiteSpace=wrap;rounded=0;fillColor=none;strokeColor=#146EB4;dashed=0;html=1;verticalAlign=top;align=left;fontColor=#146EB4;fontSize=12;spacingLeft=6;spacingTop=4;" vertex="1" parent="1">
+  <mxGeometry x="180" y="40" width="640" height="460" as="geometry" />
+</mxCell>
+        <mxCell id="125182670967232" value="End users&#xa;(web / mobile)" style="whiteSpace=wrap;rounded=0;fillColor=#232F3E;strokeColor=none;sketch=0;dashed=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.client;" vertex="1" parent="1">
+  <mxGeometry x="40" y="280" width="64" height="64" as="geometry" />
+</mxCell>
+        <mxCell id="125182668346800" value="Amazon Cognito&#xa;(user authentication)" style="whiteSpace=wrap;rounded=0;fillColor=#DD344C;strokeColor=none;sketch=0;dashed=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cognito;" vertex="1" parent="1">
+  <mxGeometry x="220" y="80" width="64" height="64" as="geometry" />
+</mxCell>
+        <mxCell id="125182668347616" value="Amazon Lex&#xa;(conversational AI)" style="whiteSpace=wrap;rounded=0;fillColor=#01A88D;strokeColor=none;sketch=0;dashed=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lex;" vertex="1" parent="1">
+  <mxGeometry x="260" y="280" width="64" height="64" as="geometry" />
+</mxCell>
+        <mxCell id="125182668348432" value="AWS Lambda&#xa;(fulfillment logic)" style="whiteSpace=wrap;rounded=0;fillColor=#ED7100;strokeColor=none;sketch=0;dashed=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+  <mxGeometry x="460" y="280" width="64" height="64" as="geometry" />
+</mxCell>
+        <mxCell id="125182668349296" value="Amazon DynamoDB&#xa;(conversation &amp; data store)" style="whiteSpace=wrap;rounded=0;fillColor=#C925D1;strokeColor=none;sketch=0;dashed=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
+  <mxGeometry x="660" y="280" width="64" height="64" as="geometry" />
+</mxCell>
+        <mxCell id="125182668350064" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=0;jettySize=auto;startArrow=block;endArrow=block;startFill=0;endFill=0;strokeColor=#545B64;" edge="1" parent="1" source="125182670967232" target="125182668346800" value="Sign in">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+        <mxCell id="125182668350016" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=0;jettySize=auto;startArrow=block;endArrow=block;startFill=0;endFill=0;strokeColor=#545B64;" edge="1" parent="1" source="125182670967232" target="125182668347616" value="Send message / Bot response">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+        <mxCell id="125182668349728" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=0;jettySize=auto;startArrow=block;endArrow=block;startFill=0;endFill=0;strokeColor=#545B64;" edge="1" parent="1" source="125182668347616" target="125182668348432" value="Invoke fulfillment">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+        <mxCell id="125182668350928" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=0;jettySize=auto;startArrow=block;endArrow=block;startFill=0;endFill=0;strokeColor=#545B64;" edge="1" parent="1" source="125182668348432" target="125182668349296" value="Read / write data">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
